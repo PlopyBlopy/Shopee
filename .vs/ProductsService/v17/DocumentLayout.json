@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\context\\iproductsservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\context\\iproductsservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\context\\idbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\context\\idbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\repositories\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\context\\productsservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\context\\productsservicedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\core\\models\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|solutionrelative:core\\models\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\core\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|solutionrelative:core\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\core\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|solutionrelative:core\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\entities\\productentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,28 +39,8 @@
       "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\entities\\imageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\core\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|solutionrelative:core\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\core\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|solutionrelative:core\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\core\\models\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{316BC634-C428-45D4-9B4A-6521EFC4F13A}|Core\\Core.csproj|solutionrelative:core\\models\\image.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\configurations\\categoriesconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\configurations\\categoriesconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\configurations\\productsconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\configurations\\productsconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\configurations\\imagesconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\configurations\\imagesconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|c:\\users\\alexey\\source\\repos\\shopee-app\\productsservice\\persistence\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E286C4A3-4B95-4115-81DB-558C052938ED}|Persistence\\Persistence.csproj|solutionrelative:persistence\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -45,52 +49,64 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 205,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 291,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductsConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Configurations\\ProductsConfiguration.cs",
-              "RelativeDocumentMoniker": "Persistence\\Configurations\\ProductsConfiguration.cs",
-              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Configurations\\ProductsConfiguration.cs",
-              "RelativeToolTip": "Persistence\\Configurations\\ProductsConfiguration.cs",
-              "ViewState": "AgIAAA0AAAAA+v////8fwCMAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T14:23:23.645Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoriesConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Configurations\\CategoriesConfiguration.cs",
-              "RelativeDocumentMoniker": "Persistence\\Configurations\\CategoriesConfiguration.cs",
-              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Configurations\\CategoriesConfiguration.cs",
-              "RelativeToolTip": "Persistence\\Configurations\\CategoriesConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T15:12:25.119Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ImagesConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Configurations\\ImagesConfiguration.cs",
-              "RelativeDocumentMoniker": "Persistence\\Configurations\\ImagesConfiguration.cs",
-              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Configurations\\ImagesConfiguration.cs",
-              "RelativeToolTip": "Persistence\\Configurations\\ImagesConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T15:10:59.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IProductsServiceDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Context\\IProductsServiceDbContext.cs",
+              "RelativeDocumentMoniker": "Persistence\\Context\\IProductsServiceDbContext.cs",
+              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Context\\IProductsServiceDbContext.cs",
+              "RelativeToolTip": "Persistence\\Context\\IProductsServiceDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:57:00.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Context\\IDbContext.cs",
+              "RelativeDocumentMoniker": "Persistence\\Context\\IDbContext.cs",
+              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Context\\IDbContext.cs",
+              "RelativeToolTip": "Persistence\\Context\\IDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:56:22.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Repositories\\IRepository.cs",
+              "RelativeDocumentMoniker": "Persistence\\Repositories\\IRepository.cs",
+              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Repositories\\IRepository.cs",
+              "RelativeToolTip": "Persistence\\Repositories\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:55:05.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductsServiceDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Context\\ProductsServiceDbContext.cs",
+              "RelativeDocumentMoniker": "Persistence\\Context\\ProductsServiceDbContext.cs",
+              "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Context\\ProductsServiceDbContext.cs",
+              "RelativeToolTip": "Persistence\\Context\\ProductsServiceDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T13:36:28.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "CategoryEntity.cs",
               "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Entities\\CategoryEntity.cs",
               "RelativeDocumentMoniker": "Persistence\\Entities\\CategoryEntity.cs",
@@ -103,20 +119,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "ProductEntity.cs",
               "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Entities\\ProductEntity.cs",
               "RelativeDocumentMoniker": "Persistence\\Entities\\ProductEntity.cs",
               "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Entities\\ProductEntity.cs",
               "RelativeToolTip": "Persistence\\Entities\\ProductEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T13:42:15.53Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "ImageEntity.cs",
               "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Persistence\\Entities\\ImageEntity.cs",
               "RelativeDocumentMoniker": "Persistence\\Entities\\ImageEntity.cs",
@@ -126,29 +142,23 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T14:27:53.885Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 205,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Core\\Models\\Product.cs",
               "RelativeDocumentMoniker": "Core\\Models\\Product.cs",
               "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Core\\Models\\Product.cs",
               "RelativeToolTip": "Core\\Models\\Product.cs",
-              "ViewState": "AgIAAAcAAACo/P////80wCgAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T15:27:08.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Core\\Models\\Category.cs",
               "RelativeDocumentMoniker": "Core\\Models\\Category.cs",
@@ -161,13 +171,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Image.cs",
               "DocumentMoniker": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Core\\Models\\Image.cs",
               "RelativeDocumentMoniker": "Core\\Models\\Image.cs",
               "ToolTip": "C:\\Users\\Alexey\\source\\repos\\Shopee-App\\ProductsService\\Core\\Models\\Image.cs",
               "RelativeToolTip": "Core\\Models\\Image.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T15:28:44.245Z",
               "EditorCaption": ""

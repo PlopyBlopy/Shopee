@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Persistence.Configurations;
 using Persistence.Entities;
 
-namespace Persistence.Persistence.Context
+namespace Persistence.Context
 {
-    public class ProductsServiceDbContext : DbContext, IDbContext
+    public class ProductsServiceDbContext : DbContext
     {
-        private readonly IConfiguration _configuration;
+        public IConfiguration Configuration { get; init; }
 
         public DbSet<ProductEntity> Products { get; set; }
         public DbSet<CategoryEntity> Categories { get; set; }
@@ -14,16 +15,20 @@ namespace Persistence.Persistence.Context
 
         public ProductsServiceDbContext(IConfiguration configuration)
         {
-            _configuration = configuration;
+            Configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("Database"));
+            optionsBuilder.UseNpgsql(Configuration.GetConnectionString("Server=localhost;Port=5432;Database=ProductsDB;User Id=admin;Password=12345;"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ProductsConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoriesConfiguration());
+            modelBuilder.ApplyConfiguration(new ImagesConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

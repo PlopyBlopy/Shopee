@@ -22,13 +22,10 @@ namespace Persistence.Configurations
             builder.HasIndex(x => x.Price);
             builder.Property(x => x.Price)
                 .IsRequired();
-            builder.ToTable(table => table.HasCheckConstraint("CK_Products_Price", "[Price] >= 0"));
 
             builder.HasIndex(x => x.Rating);
             builder.Property(x => x.Rating)
                 .IsRequired();
-            builder.ToTable(table => table.HasCheckConstraint("CK_Products_Rating", "[Rating] >= 0"));
-            builder.ToTable(table => table.HasCheckConstraint("CK_Products_Rating", "[Rating] <= 5"));
 
             builder.Property(x => x.SellerId)
                 .IsRequired();

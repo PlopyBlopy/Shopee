@@ -1,16 +1,18 @@
+using Persistence.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddScoped<ProductsServiceDbContext>();
+
+builder.Services.AddScoped<ProductsServiceDbContext>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+using var scope = app.Services.CreateScope();
+await using var dbContext = scope.ServiceProvider.GetRequiredService<ProductsServiceDbContext>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
