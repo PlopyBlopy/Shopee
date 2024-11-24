@@ -4,7 +4,7 @@ using Persistence.Entities;
 
 namespace Persistence.Configurations
 {
-    public class ProductsConfiguration : IEntityTypeConfiguration<ProductEntity>
+    internal class ProductsConfiguration : IEntityTypeConfiguration<ProductEntity>
     {
         public void Configure(EntityTypeBuilder<ProductEntity> builder)
         {

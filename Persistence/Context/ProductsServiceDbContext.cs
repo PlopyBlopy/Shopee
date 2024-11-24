@@ -31,5 +31,10 @@ namespace Persistence.Context
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
     }
 }
