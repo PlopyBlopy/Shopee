@@ -6,31 +6,33 @@ namespace Core.Models
     {
         public const int MAX_PATH_LENGTH = 260;
 
-        public int Id { get; }
+        public Guid Id { get; }
+        public int Order { get; }
         public string Path { get; }
-        public int ProductId { get; }
+        public Guid ProductId { get; }
 
-        private Image(string path, int productId)
+        private Image(Guid id, int order, string path, Guid productId)
         {
+            Id = id;
+            Order = order;
             Path = path;
             ProductId = productId;
         }
 
-        public (Image image, string error) Create(string path, int productId)
+        public static (Image model, string error) Create(Guid id, int order, string path, Guid productId)
         {
             var error = string.Empty;
 
-            if (string.IsNullOrEmpty(path) || path.Length > MAX_PATH_LENGTH)
+            if (string.IsNullOrEmpty(path))
             {
-                error = "Path is required and cannot exceed " + MAX_PATH_LENGTH + " characters.";
+                error = "Path cannot be empty.";
+            }
+            if (path.Length > MAX_PATH_LENGTH)
+            {
+                error = $"Path length cannot exceed {MAX_PATH_LENGTH} characters.";
             }
 
-            if (productId < 0)
-            {
-                error = "Product ID must be a non-negative value.";
-            }
-
-            var image = new Image(path, productId);
+            var image = new Image(id, order, path, productId);
 
             return (image, error);
         }

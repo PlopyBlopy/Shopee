@@ -1,36 +1,41 @@
-﻿namespace Core.Models
+﻿using Core.Interfaces;
+
+namespace Core.Models
 {
     public class Category
     {
         public const int MAX_TITLE_LENGTH = 40;
+        public const int MIN_TITLE_LENGTH = 5;
 
-        public int Id { get; }
-        public string Title { get; }
-        public int ParentCategoryId { get; }
-        public ICollection<Product> Products { get; }
+        public Guid Id { get; init; }
+        public string Title { get; init; }
+        public Guid ParentCategoryId { get; init; }
 
-        private Category(string title, int parentCategoryId, ICollection<Product> products)
+        private Category(Guid id, string title, Guid parentCategoryId)
         {
+            Id = id;
             Title = title;
             ParentCategoryId = parentCategoryId;
-            Products = products;
         }
 
-        public static (Category category, string error) Create(string title, int parentCategoryId, ICollection<Product> products)
+        public static (Category model, string error) Create(Guid id, string title, Guid parentCategoryId)
         {
             var error = string.Empty;
 
-            if (string.IsNullOrEmpty(title) || title.Length > MAX_TITLE_LENGTH)
+            if (string.IsNullOrEmpty(title))
             {
-                error = "Title is required and cannot exceed " + MAX_TITLE_LENGTH + " characters.";
+                error = "Title cannot be empty."; //throw
+            }
+            if (title.Length < MIN_TITLE_LENGTH)
+            {
+                error = $"Title must be at least {MIN_TITLE_LENGTH} characters long.";
+            }
+            if (title.Length > MAX_TITLE_LENGTH)
+            {
+                error = $"Title cannot exceed {MAX_TITLE_LENGTH} characters.";
             }
 
-            if (parentCategoryId < 0)
-            {
-                error = "Parent category ID must be a non-negative value.";
-            }
-
-            var category = new Category(title, parentCategoryId, products);
+            var category = new Category(id, title, parentCategoryId);
 
             return (category, error);
         }
