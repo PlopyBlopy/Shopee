@@ -3,7 +3,7 @@ import axios from "axios"
 
 export const FetchProductsFiltered = async (search, filter) => {
     try{
-        var response = await axios.get("http://localhost:5050/products/ReadFiltered", {
+        var response = await axios.get("http://localhost:5050/Products/GetFiltered", {
             params: {
                 search: search?.search,
                 sortItem: filter?.sortItem,
@@ -18,17 +18,7 @@ export const FetchProductsFiltered = async (search, filter) => {
     }
 }
 
-// export const FetchProducts = async () => {
-//     try{
-//         var response = await axios.get("http://localhost:5050/products/readAll");
-//         console.log(response.data);
-//         return response.data;
-//     }
-//     catch(ex){
-//         console.error(ex);
-//         return [];
-//     }
-// };
+
 
 export const CreateProduct = async (product) => {
     try{
@@ -40,3 +30,10 @@ export const CreateProduct = async (product) => {
         return [];
     }
 };
+
+export const FetchProductsCategory = async (categoryId) => {
+    console.log("response ID: "+ "http://localhost:5050/Products/GetCategoryAll", categoryId);
+    var response = await axios.get("http://localhost:5050/Products/GetCategoryAll"+ categoryId);
+    console.log(response.data);
+    return response.data;
+}

@@ -1,0 +1,20 @@
+.header {
+    display: flex; 
+    justify-content: center; 
+    width: 100%; /* Ширина контейнера на всю ширину */
+    padding: 20px; /* Внутренние отступы */
+    background-color: #ffffff; /* Цвет фона для контейнера */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для контейнера */
+    border-radius: 15px;
+    margin: 10px 0px 10px 0px;
+}
+
+.content {
+    display: flex; /* Делаем .content флекс-контейнером */
+    flex-direction: row; /* Указываем направление флекса (горизонтально) */
+    justify-content: center;
+    align-items: center;
+    max-width: 800px; /* Максимальная ширина контейнера */
+    width: 100%; /* Ширина контейнера по умолчанию */
+    gap: 20px;
+}

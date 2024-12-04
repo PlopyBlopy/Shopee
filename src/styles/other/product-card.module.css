@@ -1,0 +1,13 @@
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    gap: 30px; /* Отступы между карточками */
+    padding: 20px; /* Отступы вокруг контейнера */
+}
+
+.card {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}

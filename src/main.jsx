@@ -1,13 +1,29 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { ChakraProvider } from '@chakra-ui/react'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-createRoot(document.getElementById('root')).render(
+// import "./styles/tailwind.css";
+
+import App from "./App.jsx";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        bg: "#f0f0f0", // Ваш цвет фона
+      },
+    },
+  },
+  fonts: {
+    heading: "Roboto, sans-serif",
+    body: "Roboto, sans-serif",
+  },
+});
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+);

@@ -1,0 +1,24 @@
+.container {
+    margin: 5px 0px 0px 10px;
+}
+
+.depth-0 {
+    margin-left: 0;
+}
+
+.depth-1 {
+    margin-left: 10px;
+}
+
+.depth-2 {
+    margin-left: 20px;
+    
+}
+
+.depth-3 {
+    margin-left: 20px;
+}
+
+.text_1{
+    color: royalblue
+}

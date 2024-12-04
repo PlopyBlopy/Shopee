@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12 колонок */
+    /* max-width: 1200px; 
+    margin: 0 auto;  */
+}
+
+.content {
+    grid-column: 2 / span 10; /* Занимает колонки с 2 по 11 (10 колонок) */
+}
