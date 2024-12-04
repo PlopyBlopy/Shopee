@@ -2,7 +2,6 @@
 using DataBase.Entities;
 using Core.Interfaces;
 using Core.Contracts.DTO;
-using Core.Models;
 using Core.Filters;
 
 namespace DataBase.Repositories
@@ -25,7 +24,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task Add(IEnumerable<ProductEntity> entities, CancellationToken ct)
+        public async Task AddRange(IEnumerable<ProductEntity> entities, CancellationToken ct)
         {
             if (entities == null || !entities.Any())
                 throw new ArgumentException("The provided product collection cannot be null or empty.", nameof(entities));
@@ -34,7 +33,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task<ProductEntity?> Read(Guid id, CancellationToken ct)
+        public async Task<ProductEntity?> Get(Guid id, CancellationToken ct)
         {
             var entity = await _context.Products
                 .AsNoTracking()
@@ -42,7 +41,7 @@ namespace DataBase.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<ProductEntity>?> Read(Guid[] ids, CancellationToken ct)
+        public async Task<IEnumerable<ProductEntity>?> GetRange(Guid[] ids, CancellationToken ct)
         {
             if (ids == null || ids.Length == 0)
                 throw new ArgumentException("The identifiers specified for the products cannot be null or empty.", nameof(ids));
@@ -55,22 +54,29 @@ namespace DataBase.Repositories
             return entities;
         }
 
-        public async Task<IEnumerable<ProductEntity>?> ReadAll(CancellationToken ct)
+        public async Task<IEnumerable<ProductEntity>?> GetAll(CancellationToken ct)
         {
             return await _context.Products
                 .AsNoTracking()
                 .ToListAsync(ct);
         }
 
-        public async Task<IEnumerable<ProductEntity>?> ReadCategoryAll(Guid categoryId, CancellationToken ct)
+        public async Task<IEnumerable<ProductEntity>?> GetCategoryAll(Guid categoryId, CancellationToken ct)
         {
+            if (categoryId.ToString() == "ffa731f7-28d7-45c4-9039-029c441c54ee")
+            {
+                return await _context.Products
+                .AsNoTracking()
+                .ToListAsync(ct);
+            }
+
             return await _context.Products
                 .AsNoTracking()
                 .Where(e => e.CategoryId == categoryId)
                 .ToListAsync(ct);
         }
 
-        public async Task<IEnumerable<ProductCardDto>?> ReadCardFiltered(ProductFiltersDto filter, CancellationToken ct)
+        public async Task<IEnumerable<ProductCardDto>?> GetFiltered(ProductFiltersDto filter, CancellationToken ct)
         {
             IQueryable<ProductEntity> queryEnities = _context.Products
                 .AsNoTracking()
@@ -108,7 +114,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task Delete(Guid[] ids, CancellationToken ct)
+        public async Task DeleteRange(Guid[] ids, CancellationToken ct)
         {
             if (ids == null || ids.Length == 0)
                 throw new ArgumentException("The identifiers specified for the products cannot be null or empty.", nameof(ids));

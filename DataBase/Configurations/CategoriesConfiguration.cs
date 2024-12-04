@@ -14,9 +14,16 @@ namespace DataBase.Configurations
             builder.Property(x => x.Title)
                 .IsRequired()
                 .HasMaxLength(40);
+
             builder.HasIndex(x => x.ParentCategoryId);
             builder.Property(x => x.ParentCategoryId)
                 .IsRequired();
+
+            // Настройка отношения "многие к одному" с родительской категорией
+            builder.HasOne(c => c.ParentCategory) // Указываем навигационное свойство
+                .WithMany(c => c.Subcategories) // Указываем коллекцию подкатегорий
+                .HasForeignKey(c => c.ParentCategoryId) // Указываем внешний ключ
+                .OnDelete(DeleteBehavior.Restrict); // Настройка поведения при удалении
         }
     }
 }

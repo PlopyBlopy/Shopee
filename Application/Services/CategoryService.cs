@@ -1,8 +1,9 @@
-﻿using AutoMapper;
+﻿using Application.Helpers;
+using AutoMapper;
+using Core.Contracts.DTO;
 using Core.Interfaces;
 using Core.Models;
 using DataBase.Entities;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Services
 {
@@ -23,32 +24,32 @@ namespace Application.Services
             await _repository.Add(entity, ct);
         }
 
-        public async Task Add(IEnumerable<Category> models, CancellationToken ct)
+        public async Task AddRange(IEnumerable<Category> models, CancellationToken ct)
         {
             IEnumerable<CategoryEntity> entities = models.Select(m => _mapper.Map<CategoryEntity>(m));
 
-            await _repository.Add(entities, ct);
+            await _repository.AddRange(entities, ct);
         }
 
-        public async Task<Category> Read(Guid id, CancellationToken ct)
+        public async Task<Category> Get(Guid id, CancellationToken ct)
         {
-            CategoryEntity entity = await _repository.Read(id, ct);
+            CategoryEntity entity = await _repository.Get(id, ct);
             Category model = _mapper.Map<Category>(entity);
             return model;
         }
 
-        public async Task<IEnumerable<Category>> Read(Guid[] ids, CancellationToken ct)
+        public async Task<IEnumerable<Category>> GetRange(Guid[] ids, CancellationToken ct)
         {
-            var entities = await _repository.Read(ids, ct);
+            var entities = await _repository.GetRange(ids, ct);
 
             IEnumerable<Category> models = entities.Select(e => _mapper.Map<Category>(e));
 
             return models;
         }
 
-        public async Task<IEnumerable<Category>> ReadAll(CancellationToken ct)
+        public async Task<IEnumerable<Category>> GetAll(CancellationToken ct)
         {
-            IEnumerable<CategoryEntity>? entities = await _repository.ReadAll(ct);
+            IEnumerable<CategoryEntity>? entities = await _repository.GetAll(ct);
 
             if (entities == null || !entities.Any())
             {
@@ -58,6 +59,17 @@ namespace Application.Services
             IEnumerable<Category> models = entities.Select(e => _mapper.Map<Category>(e));
 
             return models;
+        }
+
+        public async Task<CategoryReadAllDto> GetCategoryTree(CancellationToken ct)
+        {
+            CategoryEntity entity = await _repository.GetCategoryTree(ct);
+
+            CategoryReadAllDto dto = _mapper.Map<CategoryReadAllDto>(entity);
+
+            Builder.BuildSubcategories(entity, dto, _mapper);
+
+            return dto;
         }
 
         public async Task Update(Guid id, Category model, CancellationToken ct)
@@ -71,9 +83,9 @@ namespace Application.Services
             await _repository.Delete(id, ct);
         }
 
-        public async Task Delete(Guid[] ids, CancellationToken ct)
+        public async Task DeleteRange(Guid[] ids, CancellationToken ct)
         {
-            await _repository.Delete(ids, ct);
+            await _repository.DeleteRange(ids, ct);
         }
     }
 }

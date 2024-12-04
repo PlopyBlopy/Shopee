@@ -6,18 +6,18 @@ namespace Core.Interfaces
     {
         public Task Add(T model, CancellationToken ct);
 
-        public Task Add(IEnumerable<T> entities, CancellationToken ct);
+        public Task AddRange(IEnumerable<T> entities, CancellationToken ct);
 
-        public Task<T?> Read(Guid id, CancellationToken ct);
+        public Task<T?> Get(Guid id, CancellationToken ct);
 
-        public Task<IEnumerable<T>?> Read(Guid[] ids, CancellationToken ct);
+        public Task<IEnumerable<T>?> GetRange(Guid[] ids, CancellationToken ct);
 
-        public Task<IEnumerable<T>?> ReadAll(CancellationToken ct);
+        public Task<IEnumerable<T>?> GetAll(CancellationToken ct);
 
         public Task Update(Guid id, T entity, CancellationToken ct);
 
         public Task Delete(Guid id, CancellationToken ct);
 
-        public Task Delete(Guid[] ids, CancellationToken ct);
+        public Task DeleteRange(Guid[] ids, CancellationToken ct);
     }
 }

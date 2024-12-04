@@ -26,32 +26,32 @@ namespace Application.Services
             await _repository.Add(entity, ct);
         }
 
-        public async Task Add(IEnumerable<Product> models, CancellationToken ct)
+        public async Task AddRange(IEnumerable<Product> models, CancellationToken ct)
         {
             IEnumerable<ProductEntity> entities = models.Select(m => _mapper.Map<ProductEntity>(m));
 
-            await _repository.Add(entities, ct);
+            await _repository.AddRange(entities, ct);
         }
 
-        public async Task<Product> Read(Guid id, CancellationToken ct)
+        public async Task<Product> Get(Guid id, CancellationToken ct)
         {
-            ProductEntity entity = await _repository.Read(id, ct);
+            ProductEntity entity = await _repository.Get(id, ct);
             Product model = _mapper.Map<Product>(entity);
             return model;
         }
 
-        public async Task<IEnumerable<Product>> Read(Guid[] ids, CancellationToken ct)
+        public async Task<IEnumerable<Product>> GetRange(Guid[] ids, CancellationToken ct)
         {
-            var entities = await _repository.Read(ids, ct);
+            var entities = await _repository.GetRange(ids, ct);
 
             IEnumerable<Product> models = entities.Select(e => _mapper.Map<Product>(e));
 
             return models;
         }
 
-        public async Task<IEnumerable<Product>> ReadAll(CancellationToken ct)
+        public async Task<IEnumerable<Product>> GetAll(CancellationToken ct)
         {
-            IEnumerable<ProductEntity>? entities = await _repository.ReadAll(ct);
+            IEnumerable<ProductEntity>? entities = await _repository.GetAll(ct);
 
             if (entities == null || !entities.Any())
             {
@@ -63,9 +63,9 @@ namespace Application.Services
             return models;
         }
 
-        public async Task<IEnumerable<Product>> ReadCategoryAll(Guid categoryId, CancellationToken ct)
+        public async Task<IEnumerable<Product>> GetCategoryAll(Guid categoryId, CancellationToken ct)
         {
-            IEnumerable<ProductEntity>? entities = await _repository.ReadCategoryAll(categoryId, ct);
+            IEnumerable<ProductEntity>? entities = await _repository.GetCategoryAll(categoryId, ct);
 
             if (entities == null || !entities.Any())
             {
@@ -77,14 +77,14 @@ namespace Application.Services
             return models;
         }
 
-        public async Task<IEnumerable<ProductCardDto>?> ReadFiltered(ProductFiltersDto filter, CancellationToken ct)
+        public async Task<IEnumerable<ProductCardDto>?> GetFiltered(ProductFiltersDto filter, CancellationToken ct)
         {
             //IEnumerable<ProductEntity>? entities = await _repository.ReadFiltered(filter, ct);
             //IEnumerable<ProductCardDto> dtos = entities.Select(m => _mapper.Map<ProductCardDto>(m));
 
             //IEnumerable<Product> models = entities.Select(e => _mapper.Map<Product>(e));
 
-            IEnumerable<ProductCardDto>? dtos = await _repository.ReadCardFiltered(filter, ct);
+            IEnumerable<ProductCardDto>? dtos = await _repository.GetFiltered(filter, ct);
 
             return dtos;
         }
@@ -100,9 +100,9 @@ namespace Application.Services
             await _repository.Delete(id, ct);
         }
 
-        public async Task Delete(Guid[] ids, CancellationToken ct)
+        public async Task DeleteRange(Guid[] ids, CancellationToken ct)
         {
-            await _repository.Delete(ids, ct);
+            await _repository.DeleteRange(ids, ct);
         }
     }
 }

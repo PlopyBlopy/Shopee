@@ -17,8 +17,8 @@
   },
   {
     "ContainingType": "API.Controllers.CategoryController",
-    "Method": "AddArray",
-    "RelativePath": "Category/AddArray",
+    "Method": "AddARange",
+    "RelativePath": "Category/AddRange",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -49,8 +49,8 @@
   },
   {
     "ContainingType": "API.Controllers.CategoryController",
-    "Method": "Delete",
-    "RelativePath": "Category/DeleteArray",
+    "Method": "DeleteRange",
+    "RelativePath": "Category/DeleteRange",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -65,8 +65,8 @@
   },
   {
     "ContainingType": "API.Controllers.CategoryController",
-    "Method": "Read",
-    "RelativePath": "Category/Read_{id}",
+    "Method": "Get",
+    "RelativePath": "Category/Get{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -91,8 +91,8 @@
   },
   {
     "ContainingType": "API.Controllers.CategoryController",
-    "Method": "ReadAll",
-    "RelativePath": "Category/ReadAll",
+    "Method": "GetAll",
+    "RelativePath": "Category/GetAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -111,8 +111,28 @@
   },
   {
     "ContainingType": "API.Controllers.CategoryController",
-    "Method": "Read",
-    "RelativePath": "Category/ReadArray",
+    "Method": "GetCategoryTree",
+    "RelativePath": "Category/GetCategoryTree",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Core.Contracts.DTO.CategoryReadAllDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.CategoryController",
+    "Method": "GetRange",
+    "RelativePath": "Category/GetRange",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -138,7 +158,7 @@
   {
     "ContainingType": "API.Controllers.CategoryController",
     "Method": "Update",
-    "RelativePath": "Category/Update_{id}",
+    "RelativePath": "Category/Update{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -184,8 +204,8 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
-    "Method": "AddArray",
-    "RelativePath": "Products/AddArray",
+    "Method": "AddRange",
+    "RelativePath": "Products/AddRange",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -216,8 +236,8 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
-    "Method": "Delete",
-    "RelativePath": "Products/DeleteArray",
+    "Method": "DeleteRange",
+    "RelativePath": "Products/DeleteRange",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -232,8 +252,8 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
-    "Method": "Read",
-    "RelativePath": "Products/Read_{id}",
+    "Method": "Get",
+    "RelativePath": "Products/Get{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -258,8 +278,8 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
-    "Method": "ReadAll",
-    "RelativePath": "Products/ReadAll",
+    "Method": "GetAll",
+    "RelativePath": "Products/GetAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -278,34 +298,8 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
-    "Method": "Read",
-    "RelativePath": "Products/ReadArray",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ids",
-        "Type": "System.Guid[]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Contracts.Response.ProductFullResponse, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "API.Controllers.ProductsController",
-    "Method": "ReadCategoryAll",
-    "RelativePath": "Products/ReadCategoryAll",
+    "Method": "GetCategoryAll",
+    "RelativePath": "Products/GetCategoryAll{categoryId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -313,7 +307,7 @@
       {
         "Name": "categoryId",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -330,8 +324,8 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
-    "Method": "ReadFiltered",
-    "RelativePath": "Products/ReadFiltered",
+    "Method": "GetFiltered",
+    "RelativePath": "Products/GetFiltered",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -366,8 +360,34 @@
   },
   {
     "ContainingType": "API.Controllers.ProductsController",
+    "Method": "GetRange",
+    "RelativePath": "Products/GetRange",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ids",
+        "Type": "System.Guid[]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Core.Contracts.Response.ProductFullResponse, Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.ProductsController",
     "Method": "Update",
-    "RelativePath": "Products/Update_{id}",
+    "RelativePath": "Products/Update{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

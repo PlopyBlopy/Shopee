@@ -17,7 +17,7 @@
         public double Rating { get; }
         public DateTime CreateAt { get; }
         public Guid SellerId { get; }
-        public Guid CategoryId { get; }
+        public Guid CategoryId { get; } //ICollection - много категорий
 
         private Product(Guid id, string title, string description, decimal price, double rating, DateTime createAt, Guid sellerId, Guid categoryId)
         {

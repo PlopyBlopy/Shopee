@@ -110,6 +110,22 @@ namespace DataBase.Migrations
 
                     b.ToTable("Products", (string)null);
                 });
+
+            modelBuilder.Entity("DataBase.Entities.CategoryEntity", b =>
+                {
+                    b.HasOne("DataBase.Entities.CategoryEntity", "ParentCategory")
+                        .WithMany("Subcategories")
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ParentCategory");
+                });
+
+            modelBuilder.Entity("DataBase.Entities.CategoryEntity", b =>
+                {
+                    b.Navigation("Subcategories");
+                });
 #pragma warning restore 612, 618
         }
     }

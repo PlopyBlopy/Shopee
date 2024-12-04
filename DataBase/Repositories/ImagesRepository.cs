@@ -22,7 +22,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task Add(IEnumerable<ImageEntity> entities, CancellationToken ct)
+        public async Task AddRange(IEnumerable<ImageEntity> entities, CancellationToken ct)
         {
             if (entities == null || !entities.Any())
                 throw new ArgumentException("The provided image collection cannot be null or empty.", nameof(entities));
@@ -31,7 +31,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task<ImageEntity?> Read(Guid id, CancellationToken ct)
+        public async Task<ImageEntity?> Get(Guid id, CancellationToken ct)
         {
             var entity = await _context.Images
                 .AsNoTracking()
@@ -39,7 +39,7 @@ namespace DataBase.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<ImageEntity>?> Read(Guid[] ids, CancellationToken ct)
+        public async Task<IEnumerable<ImageEntity>?> GetRange(Guid[] ids, CancellationToken ct)
         {
             if (ids == null || ids.Length == 0)
                 throw new ArgumentException("The identifiers specified for the images cannot be null or empty.", nameof(ids));
@@ -52,7 +52,7 @@ namespace DataBase.Repositories
             return entities;
         }
 
-        public async Task<IEnumerable<ImageEntity>?> ReadAll(CancellationToken ct)
+        public async Task<IEnumerable<ImageEntity>?> GetAll(CancellationToken ct)
         {
             return await _context.Images
                 .AsNoTracking()
@@ -77,7 +77,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task Delete(Guid[] ids, CancellationToken ct)
+        public async Task DeleteRange(Guid[] ids, CancellationToken ct)
         {
             if (ids == null || ids.Length == 0)
                 throw new ArgumentException("The identifiers specified for the images cannot be null or empty.", nameof(ids));

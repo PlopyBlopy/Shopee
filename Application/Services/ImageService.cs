@@ -22,32 +22,32 @@ namespace Application.Services
             await _repository.Add(entity, ct);
         }
 
-        public async Task Add(IEnumerable<Image> models, CancellationToken ct)
+        public async Task AddRange(IEnumerable<Image> models, CancellationToken ct)
         {
             IEnumerable<ImageEntity> entities = models.Select(m => _mapper.Map<ImageEntity>(m));
 
-            await _repository.Add(entities, ct);
+            await _repository.AddRange(entities, ct);
         }
 
-        public async Task<Image> Read(Guid id, CancellationToken ct)
+        public async Task<Image> Get(Guid id, CancellationToken ct)
         {
-            ImageEntity entity = await _repository.Read(id, ct);
+            ImageEntity entity = await _repository.Get(id, ct);
             Image model = _mapper.Map<Image>(entity);
             return model;
         }
 
-        public async Task<IEnumerable<Image>> Read(Guid[] ids, CancellationToken ct)
+        public async Task<IEnumerable<Image>> GetRange(Guid[] ids, CancellationToken ct)
         {
-            var entities = await _repository.Read(ids, ct);
+            var entities = await _repository.GetRange(ids, ct);
 
             IEnumerable<Image> models = entities.Select(e => _mapper.Map<Image>(e));
 
             return models;
         }
 
-        public async Task<IEnumerable<Image>> ReadAll(CancellationToken ct)
+        public async Task<IEnumerable<Image>> GetAll(CancellationToken ct)
         {
-            IEnumerable<ImageEntity>? entities = await _repository.ReadAll(ct);
+            IEnumerable<ImageEntity>? entities = await _repository.GetAll(ct);
 
             if (entities == null || !entities.Any())
             {
@@ -70,9 +70,9 @@ namespace Application.Services
             await _repository.Delete(id, ct);
         }
 
-        public async Task Delete(Guid[] ids, CancellationToken ct)
+        public async Task DeleteRange(Guid[] ids, CancellationToken ct)
         {
-            await _repository.Delete(ids, ct);
+            await _repository.DeleteRange(ids, ct);
         }
     }
 }

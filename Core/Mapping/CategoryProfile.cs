@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Contracts.DTO;
 using Core.Contracts.Request;
 using Core.Contracts.Response;
 using Core.Models;
@@ -19,6 +20,9 @@ namespace Core.Mapping
             .ConvertUsing(src => SrcEntityDestModel(src));
             CreateMap<Category, CategoryEntity>()
             .ConvertUsing(src => SrcModelDestEntity(src));
+
+            CreateMap<CategoryEntity, CategoryReadAllDto>()
+            .ConvertUsing(src => SrcEntityDestDtoAll(src));
         }
 
         private Category SrcRequestDestModel(CategoryRequest src)
@@ -48,6 +52,18 @@ namespace Core.Mapping
         {
             Category model = Category.Create(src.Id, src.Title, src.ParentCategoryId).model;
             return model;
+        }
+
+        private CategoryReadAllDto SrcEntityDestDtoAll(CategoryEntity src)
+        {
+            CategoryReadAllDto dto = new CategoryReadAllDto(src.Id, src.Title, src.ParentCategoryId, new List<CategoryReadAllDto>());
+            return dto;
+        }
+
+        private CategoryReadAllDto SrcDtoAllDestDtoAll(CategoryReadAllDto src)
+        {
+            CategoryReadAllDto dto = new CategoryReadAllDto(src.Id, src.Title, src.ParentCategoryId, new List<CategoryReadAllDto>());
+            return dto;
         }
     }
 }

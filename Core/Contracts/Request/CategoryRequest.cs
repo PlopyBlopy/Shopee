@@ -2,5 +2,5 @@
 {
     public record CategoryRequest(
         string Title,
-        Guid ParentCategoryId);
+        Guid ParentCategoryId = default);
 }

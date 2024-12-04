@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DataBase.Entities;
 using Core.Interfaces;
+using Core.Models;
 
 namespace DataBase.Repositories
 {
@@ -18,11 +19,16 @@ namespace DataBase.Repositories
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
 
+            CategoryEntity? parentIsThere = await Get(entity.ParentCategoryId, ct);
+
+            if (parentIsThere == null)
+                throw new KeyNotFoundException($"The parent category was not found. ParentCategoryId: {entity.ParentCategoryId}");
+
             await _context.Categories.AddAsync(entity, ct);
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task Add(IEnumerable<CategoryEntity> entities, CancellationToken ct)
+        public async Task AddRange(IEnumerable<CategoryEntity> entities, CancellationToken ct)
         {
             if (entities == null || !entities.Any())
                 throw new ArgumentException("The provided category collection cannot be null or empty.", nameof(entities));
@@ -31,7 +37,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task<CategoryEntity?> Read(Guid id, CancellationToken ct)
+        public async Task<CategoryEntity?> Get(Guid id, CancellationToken ct)
         {
             var entity = await _context.Categories
                 .AsNoTracking()
@@ -39,7 +45,7 @@ namespace DataBase.Repositories
             return entity;
         }
 
-        public async Task<IEnumerable<CategoryEntity>?> Read(Guid[] ids, CancellationToken ct)
+        public async Task<IEnumerable<CategoryEntity>?> GetRange(Guid[] ids, CancellationToken ct)
         {
             if (ids == null || ids.Length == 0)
                 throw new ArgumentException("The identifiers specified for the categories cannot be null or empty.", nameof(ids));
@@ -52,11 +58,27 @@ namespace DataBase.Repositories
             return entities;
         }
 
-        public async Task<IEnumerable<CategoryEntity>?> ReadAll(CancellationToken ct)
+        public async Task<IEnumerable<CategoryEntity>?> GetAll(CancellationToken ct)
         {
             return await _context.Categories
                 .AsNoTracking()
                 .ToListAsync(ct);
+        }
+
+        public async Task<CategoryEntity> GetCategoryTree(CancellationToken ct)
+        {
+            var parentCategoryId = Category.DEFAULT_CATEGORY_ID;
+
+            var query = _context.Categories.AsNoTracking().Include(c => c.Subcategories);
+
+            for (int i = 0; i < 4; i++) // Улучшить
+            {
+                query = query.ThenInclude(c => c.Subcategories);
+            }
+
+            var category = await query.FirstOrDefaultAsync(c => c.Id == parentCategoryId, ct);
+
+            return category;
         }
 
         public async Task Update(Guid id, CategoryEntity entity, CancellationToken ct)
@@ -76,7 +98,7 @@ namespace DataBase.Repositories
             await _context.SaveChangesAsync(ct);
         }
 
-        public async Task Delete(Guid[] ids, CancellationToken ct)
+        public async Task DeleteRange(Guid[] ids, CancellationToken ct)
         {
             if (ids == null || ids.Length == 0)
                 throw new ArgumentException("The identifiers specified for the categories cannot be null or empty.", nameof(ids));

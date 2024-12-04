@@ -4,6 +4,7 @@ using Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Core.Contracts.Request;
 using Core.Contracts.Response;
+using Core.Contracts.DTO;
 
 namespace API.Controllers
 {
@@ -25,73 +26,95 @@ namespace API.Controllers
         {
             if (request == null)
             {
-                return NoContent();
+                return BadRequest();
             }
 
-            Category model = _mapper.Map<Category>(request);
+            Category model;
 
+            try
+            {
+                Category entity = await _service.Get(request.ParentCategoryId, ct);
+                model = _mapper.Map<Category>(request);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                model = Category.Create(Guid.NewGuid(), request.Title, Guid.Parse("ffa731f7-28d7-45c4-9039-029c441c54ee")).model;
+            }
+            //model = Category.Create(Guid.NewGuid(), request.Title, Guid.Parse("27c58ec1-89b8-4903-baa5-b9cf505a2331")).model;
+
+            model = _mapper.Map<Category>(request);
             await _service.Add(model, ct);
 
             return Ok();
         }
 
-        [HttpPost("AddArray")]
-        public async Task<ActionResult> AddArray([FromQuery] IEnumerable<CategoryRequest> requests, CancellationToken ct)
+        [HttpPost("AddRange")]
+        public async Task<ActionResult> AddARange([FromQuery] IEnumerable<CategoryRequest> requests, CancellationToken ct)
         {
             if (!requests.Any() || requests == null)
             {
-                return NoContent();
+                return BadRequest();
             }
 
             IEnumerable<Category> models = requests.Select(r => _mapper.Map<Category>(r));
 
-            await _service.Add(models, ct);
+            await _service.AddRange(models, ct);
 
             return Ok();
         }
 
-        [HttpGet("Read_{id:guid}")]
-        public async Task<ActionResult<CategoryResponse>> Read(Guid id, CancellationToken ct)
+        [HttpGet("Get{id:guid}")]
+        public async Task<ActionResult<CategoryResponse>> Get(Guid id, CancellationToken ct)
         {
-            Category model = await _service.Read(id, ct);
+            Category model = await _service.Get(id, ct);
             CategoryResponse response = _mapper.Map<CategoryResponse>(model);
 
             return Ok(response);
         }
 
-        [HttpGet("ReadArray")]
-        public async Task<ActionResult<IEnumerable<CategoryResponse>>> Read([FromQuery] Guid[] ids, CancellationToken ct)
+        [HttpGet("GetRange")]
+        public async Task<ActionResult<IEnumerable<CategoryResponse>>> GetRange([FromQuery] Guid[] ids, CancellationToken ct)
         {
             if (!ids.Any() || ids == null)
             {
-                return NoContent();
+                return BadRequest();
             }
 
-            IEnumerable<Category> models = await _service.Read(ids, ct);
+            IEnumerable<Category> models = await _service.GetRange(ids, ct);
 
             IEnumerable<CategoryResponse> response = models.Select(m => _mapper.Map<CategoryResponse>(m));
 
             return Ok(response);
         }
 
-        [HttpGet("ReadAll")]
-        public async Task<ActionResult<IEnumerable<CategoryResponse>?>> ReadAll(CancellationToken ct)
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<IEnumerable<CategoryResponse>?>> GetAll(CancellationToken ct)
         {
-            IEnumerable<Category> models = await _service.ReadAll(ct);
+            IEnumerable<Category> models = await _service.GetAll(ct);
 
             IEnumerable<CategoryResponse> response = models.Select(m => _mapper.Map<CategoryResponse>(m));
 
             return Ok(response);
         }
 
-        [HttpPut("Update_{id:guid}")]
+        [HttpGet("GetCategoryTree")]
+        public async Task<ActionResult<CategoryReadAllDto>> GetCategoryTree(CancellationToken ct)
+        {
+            CategoryReadAllDto dto = await _service.GetCategoryTree(ct);
+
+            CategoryReadAllResponse response = new CategoryReadAllResponse(dto);
+
+            return Ok(dto);
+        }
+
+        [HttpPut("Update{id:guid}")]
         public async Task<ActionResult<CategoryResponse>> Update(Guid id, [FromBody] CategoryRequest request, CancellationToken ct)
         {
             Category model = _mapper.Map<Category>(request);
 
             await _service.Update(id, model, ct);
 
-            Category updatedModel = await _service.Read(id, ct);
+            Category updatedModel = await _service.Get(id, ct);
 
             return Ok(updatedModel);
         }
@@ -104,10 +127,10 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpDelete("DeleteArray")]
-        public async Task<ActionResult> Delete([FromQuery] Guid[] ids, CancellationToken ct)
+        [HttpDelete("DeleteRange")]
+        public async Task<ActionResult> DeleteRange([FromQuery] Guid[] ids, CancellationToken ct)
         {
-            await _service.Delete(ids, ct);
+            await _service.DeleteRange(ids, ct);
 
             return Ok();
         }

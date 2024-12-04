@@ -37,8 +37,8 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpPost("AddArray")]
-        public async Task<ActionResult> AddArray([FromQuery] IEnumerable<ProductCreateRequest> requests, CancellationToken ct)
+        [HttpPost("AddRange")]
+        public async Task<ActionResult> AddRange([FromQuery] IEnumerable<ProductCreateRequest> requests, CancellationToken ct)
         {
             if (!requests.Any() || requests == null)
             {
@@ -47,79 +47,75 @@ namespace API.Controllers
 
             IEnumerable<Product> models = requests.Select(r => _mapper.Map<Product>(r));
 
-            await _service.Add(models, ct);
+            await _service.AddRange(models, ct);
 
             return Ok();
         }
 
-        [HttpGet("Read_{id:guid}")]
-        public async Task<ActionResult<ProductFullResponse>> Read(Guid id, CancellationToken ct)
+        [HttpGet("Get{id:guid}")]
+        public async Task<ActionResult<ProductFullResponse>> Get(Guid id, CancellationToken ct)
         {
-            Product model = await _service.Read(id, ct);
+            Product model = await _service.Get(id, ct);
             ProductFullResponse response = _mapper.Map<ProductFullResponse>(model);
 
             return Ok(response);
         }
 
-        [HttpGet("ReadArray")]
-        public async Task<ActionResult<IEnumerable<ProductFullResponse>>> Read([FromQuery] Guid[] ids, CancellationToken ct)
+        [HttpGet("GetRange")]
+        public async Task<ActionResult<IEnumerable<ProductFullResponse>>> GetRange([FromQuery] Guid[] ids, CancellationToken ct)
         {
             if (!ids.Any() || ids == null)
             {
                 return NoContent();
             }
 
-            IEnumerable<Product> models = await _service.Read(ids, ct);
+            IEnumerable<Product> models = await _service.GetRange(ids, ct);
 
             IEnumerable<ProductFullResponse> response = models.Select(m => _mapper.Map<ProductFullResponse>(m));
 
             return Ok(response);
         }
 
-        [HttpGet("ReadAll")]
-        public async Task<ActionResult<IEnumerable<ProductFullResponse>?>> ReadAll(CancellationToken ct)
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<IEnumerable<ProductFullResponse>?>> GetAll(CancellationToken ct)
         {
-            IEnumerable<Product> models = await _service.ReadAll(ct);
+            IEnumerable<Product> models = await _service.GetAll(ct);
 
             IEnumerable<ProductFullResponse> response = models.Select(m => _mapper.Map<ProductFullResponse>(m));
 
             return Ok(response);
         }
 
-        [HttpGet("ReadCategoryAll")]
-        public async Task<ActionResult<IEnumerable<ProductFullResponse>?>> ReadCategoryAll(Guid categoryId, CancellationToken ct)
+        [HttpGet("GetCategoryAll{categoryId:guid}")]
+        public async Task<ActionResult<IEnumerable<ProductFullResponse>?>> GetCategoryAll(Guid categoryId, CancellationToken ct)
         {
-            IEnumerable<Product> models = await _service.ReadCategoryAll(categoryId, ct);
+            IEnumerable<Product> models = await _service.GetCategoryAll(categoryId, ct);
 
             IEnumerable<ProductFullResponse> response = models.Select(m => _mapper.Map<ProductFullResponse>(m));
 
             return Ok(response);
         }
 
-        [HttpGet("ReadFiltered")]
-        public async Task<ActionResult<ProductFilteredResponse?>> ReadFiltered([FromQuery] ProductFiltersRequest request, CancellationToken ct)
+        [HttpGet("GetFiltered")]
+        public async Task<ActionResult<ProductFilteredResponse?>> GetFiltered([FromQuery] ProductFiltersRequest request, CancellationToken ct)
         {
             ProductFiltersDto filter = _mapper.Map<ProductFiltersDto>(request);
 
-            //IEnumerable<Product>? models = await _service.ReadFiltered(filter, ct);
-            //IEnumerable<ProductCardDto> dtos = models.Select(m => _mapper.Map<ProductCardDto>(m));
-            //ProductFilter.Filters(filter, dtos);
-
-            IEnumerable<ProductCardDto>? dtos = await _service.ReadFiltered(filter, ct);
+            IEnumerable<ProductCardDto>? dtos = await _service.GetFiltered(filter, ct);
 
             ProductFilteredResponse response = new ProductFilteredResponse(dtos);
 
             return Ok(dtos);
         }
 
-        [HttpPut("Update_{id:guid}")]
+        [HttpPut("Update{id:guid}")]
         public async Task<ActionResult<ProductFullResponse>> Update(Guid id, [FromBody] ProductCreateRequest request, CancellationToken ct)
         {
             Product model = _mapper.Map<Product>(request);
 
             await _service.Update(id, model, ct);
 
-            Product updatedModel = await _service.Read(id, ct);
+            Product updatedModel = await _service.Get(id, ct);
 
             return Ok(updatedModel);
         }
@@ -132,10 +128,10 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpDelete("DeleteArray")]
-        public async Task<ActionResult> Delete([FromQuery] Guid[] ids, CancellationToken ct)
+        [HttpDelete("DeleteRange")]
+        public async Task<ActionResult> DeleteRange([FromQuery] Guid[] ids, CancellationToken ct)
         {
-            await _service.Delete(ids, ct);
+            await _service.DeleteRange(ids, ct);
 
             return Ok();
         }
