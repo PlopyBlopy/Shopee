@@ -86,8 +86,8 @@ namespace API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("GetCategoryAll{categoryId:guid}")]
-        public async Task<ActionResult<IEnumerable<ProductFullResponse>?>> GetCategoryAll(Guid categoryId, CancellationToken ct)
+        [HttpGet("GetCategoryAll")]
+        public async Task<ActionResult<IEnumerable<ProductFullResponse>?>> GetCategoryAll([FromQuery] Guid categoryId, CancellationToken ct)
         {
             IEnumerable<Product> models = await _service.GetCategoryAll(categoryId, ct);
 

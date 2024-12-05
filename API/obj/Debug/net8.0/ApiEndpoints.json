@@ -299,7 +299,7 @@
   {
     "ContainingType": "API.Controllers.ProductsController",
     "Method": "GetCategoryAll",
-    "RelativePath": "Products/GetCategoryAll{categoryId}",
+    "RelativePath": "Products/GetCategoryAll",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -307,7 +307,7 @@
       {
         "Name": "categoryId",
         "Type": "System.Guid",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -332,6 +332,11 @@
     "Parameters": [
       {
         "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
         "Type": "System.String",
         "IsRequired": false
       },

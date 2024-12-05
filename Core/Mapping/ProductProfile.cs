@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Core.Contracts.DTO;
 using Core.Contracts.Request;
 using Core.Contracts.Response;
@@ -83,7 +84,7 @@ namespace Core.Mapping
 
         private ProductFiltersDto SrcRequestDestDto(ProductFiltersRequest src)
         {
-            ProductFiltersDto dto = new ProductFiltersDto(src?.Search, src?.SortItem, src?.SortOrder);
+            ProductFiltersDto dto = new ProductFiltersDto(src?.Search, new Guid(src.CategoryId), src?.SortItem, src?.SortOrder);
             return dto;
         }
 

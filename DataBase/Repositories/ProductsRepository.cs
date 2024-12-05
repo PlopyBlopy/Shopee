@@ -3,6 +3,7 @@ using DataBase.Entities;
 using Core.Interfaces;
 using Core.Contracts.DTO;
 using Core.Filters;
+using Core.Models;
 
 namespace DataBase.Repositories
 {
@@ -63,7 +64,7 @@ namespace DataBase.Repositories
 
         public async Task<IEnumerable<ProductEntity>?> GetCategoryAll(Guid categoryId, CancellationToken ct)
         {
-            if (categoryId.ToString() == "ffa731f7-28d7-45c4-9039-029c441c54ee")
+            if (categoryId == Category.DEFAULT_CATEGORY_ID)
             {
                 return await _context.Products
                 .AsNoTracking()
@@ -82,6 +83,11 @@ namespace DataBase.Repositories
                 .AsNoTracking()
                 .Where(e => string.IsNullOrWhiteSpace(filter.Search) ||
                             e.Title.ToLower().Contains(filter.Search.ToLower()));
+
+            if (filter.CategoryId != Category.DEFAULT_CATEGORY_ID)
+            {
+                queryEnities = queryEnities.Where(e => e.CategoryId == filter.CategoryId);
+            }
 
             ProductFilter.Filters(filter, ref queryEnities);
 

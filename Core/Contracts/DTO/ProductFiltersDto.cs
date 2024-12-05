@@ -1,4 +1,4 @@
 ﻿namespace Core.Contracts.DTO
 {
-    public record ProductFiltersDto(string? Search, string? SortProp, string? SortOrder);
+    public record ProductFiltersDto(string? Search, Guid? CategoryId, string? SortProp, string? SortOrder);
 }
