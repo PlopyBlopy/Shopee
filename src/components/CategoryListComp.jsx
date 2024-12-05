@@ -1,19 +1,21 @@
 import { useContext } from "react";
-import styles from "../styles/other/category.module.css";
-import Category from "./CategoryComp";
-import { FilterContext } from "./FilterContext.js";
 
-const CategoryList = ({ categories, onClose, depth = 0 }) => {
-  const { setCategory } = useContext(FilterContext);
+import { FilterContext } from "./Contexts/FilterContext";
+import Category from "./CategoryItemComp";
+
+import styles from "../styles/stylesheets/category.module.css";
+
+const CategoryList = ({ categories, depth = 0 }) => {
+  const { setFilter } = useContext(FilterContext);
 
   if (!categories || categories.length === 0) {
     return null;
   }
 
-  const HandleChange = (e) => {
-    // onClose();
-    setCategory(e.target.value);
+  const handleCategoryChange = (e) => {
+    setFilter({ categoryId: e.target.value });
   };
+
   return (
     <ul className={styles.container}>
       {categories.map((category) => (
@@ -22,7 +24,7 @@ const CategoryList = ({ categories, onClose, depth = 0 }) => {
             id={category.id}
             title={category.title}
             depth={depth}
-            HandleChange={HandleChange}
+            onCategoryChange={handleCategoryChange}
           />
           {category.subcategories && category.subcategories.length > 0 && (
             <CategoryList
@@ -35,5 +37,4 @@ const CategoryList = ({ categories, onClose, depth = 0 }) => {
     </ul>
   );
 };
-
 export default CategoryList;

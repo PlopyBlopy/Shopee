@@ -1,6 +1,6 @@
 import { Heading, Select } from "@chakra-ui/react";
 
-import style from "../styles/other/filter.module.css";
+import style from "../styles/stylesheets/filter.module.css";
 
 export default function ProductCartComponent({ filter, setFilter }) {
   const handleSortItemChange = (e) =>

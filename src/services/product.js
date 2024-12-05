@@ -1,11 +1,12 @@
 import axios from "axios"
 
 
-export const FetchProductsFiltered = async (search, filter) => {
+export const FetchProductsFiltered = async (filter) => {
     try{
         var response = await axios.get("http://localhost:5050/Products/GetFiltered", {
             params: {
-                search: search?.search,
+                search: filter?.search,
+                categoryId: filter?.categoryId,
                 sortItem: filter?.sortItem,
                 sortOrder: filter?.sortOrder
             }
@@ -31,9 +32,9 @@ export const CreateProduct = async (product) => {
     }
 };
 
-export const FetchProductsCategory = async (categoryId) => {
-    console.log("response ID: "+ "http://localhost:5050/Products/GetCategoryAll", categoryId);
-    var response = await axios.get("http://localhost:5050/Products/GetCategoryAll"+ categoryId);
-    console.log(response.data);
-    return response.data;
-}
+// export const FetchProductsCategory = async (categoryId) => {
+//     console.log("response ID: "+ "http://localhost:5050/Products/GetCategoryAll", categoryId);
+//     var response = await axios.get("http://localhost:5050/Products/GetCategoryAll" + categoryId);
+//     console.log(response.data);
+//     return response.data;
+// }

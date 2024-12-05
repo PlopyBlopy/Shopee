@@ -33,12 +33,9 @@ export default function ProductCartComponent({ title, price, rating }) {
           <Text color="orange.300" fontWeight="medium" fontSize="2xl">
             {rating}
           </Text>
-          <Text color="orange.300" fontWeight="medium" fontSize="2xl">
-            {rating}
-          </Text>
         </Stack>
       </CardBody>
-      <CardFooter className="flex justify-center">
+      <CardFooter>
         <Button colorScheme="blue">Купить</Button>
       </CardFooter>
     </Card>

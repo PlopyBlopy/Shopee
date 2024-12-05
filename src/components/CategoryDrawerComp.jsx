@@ -1,5 +1,4 @@
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
-
 import {
   Drawer,
   DrawerBody,
@@ -9,17 +8,17 @@ import {
   DrawerHeader,
   DrawerOverlay,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import CategoryList from "./CategoryList.jsx";
+import { useRef } from "react";
 
-export default function Cataloge({ categories }) {
+import CategoryList from "./CategoryListComp.jsx";
+
+export default function CategoryDrawer({ categories }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+  const btnRef = useRef();
 
-  useEffect(() => {
-    console.log("ON CLOSE");
-    onClose;
-  }, [onClose]);
+  const handlerCloseDrawer = () => {
+    console.log("handlerCloseDrawer:");
+  };
 
   return (
     <>
@@ -41,7 +40,10 @@ export default function Cataloge({ categories }) {
           </Box>
 
           <DrawerBody>
-            <CategoryList categories={categories} onClose={onClose} />
+            <CategoryList
+              categories={categories}
+              onCloseDrawer={handlerCloseDrawer}
+            />
           </DrawerBody>
 
           <DrawerFooter></DrawerFooter>
